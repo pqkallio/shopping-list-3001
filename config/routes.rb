@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :lists
 
-  resources :users
+  resources :users do
+    get 'lists', on: :member
+  end
 
   resource :session, only: [:new, :create, :delete]
 

@@ -34,6 +34,8 @@ gem 'valid_email'
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development, :test do

@@ -36,12 +36,7 @@
 </p>
 
 <p>
-  <strong>Lists:</strong><br>
-  <ul>
-    <% @user.lists.each do |l| %>
-      <li><%= link_to l.name, l %></li>
-    <% end %>
-  </ul>
+  <strong><%= link_to "Lists", lists_user_path(@user) %></strong>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

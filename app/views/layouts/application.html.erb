@@ -9,7 +9,9 @@
 <body>
 
 <div class="navibar">
-  <%= link_to 'Lists', lists_path %>
+  <% if current_user %>
+    <strong><%= link_to "My lists", lists_user_path(current_user) %></strong>
+  <% end %>
   <%= link_to 'Products', products_path %>
   <%= link_to 'Users', users_path %> |
   <% if current_user %>
