@@ -32,6 +32,8 @@ gem 'valid_email'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'coveralls', require: false
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
