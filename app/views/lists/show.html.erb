@@ -12,12 +12,21 @@
 
 <p>
   <strong>Purchases:</strong>
-  <ul>
+  <table id="purchase_table">
     <% @list.purchases.each do |p| %>
-      <li><%= p.product.name %>, <%= p.amount %></li>
+      <tr id="purchase_id_<%= p.id %>" class="purchase_row" onclick="selectPurchase(<%= p.id %>)">
+        <td><%= p.product.name %></td>
+        <td><%= p.amount %></td>
+      </tr>
     <% end %>
-  </ul>
-</p>
+    <tr id="add_purchase">
+      <td><input type="text" name="product" id="product" /></td>
+      <td><input type="number" min="1" max="1000" value="1" name="amount" id="amount" /></td>
+      <td><input type="button" name="add_button" id="add_button" value="Add!" onclick="addPurchase()" /></td>
+    </tr>
+  </table>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<input type="hidden" name="list" id="list" value="<%= @list.id %>" />
+
+</p>
+<button id="collect_button" onclick="collectSelectedPurchases()">Collect</button>

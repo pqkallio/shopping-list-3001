@@ -63,6 +63,7 @@ class UsersController < ApplicationController
 
   def lists
     @lists = List.where user: @user
+    @list = List.new user: @user
   end
 
   private

@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     get 'lists', on: :member
   end
 
-  resource :session, only: [:new, :create, :delete]
+  resources :purchases do
+    post 'toggle_bought', on: :collection
+    get 'last', on: :collection
+  end
+
+  resource :session, only: [:new, :create, :destroy]
 
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
