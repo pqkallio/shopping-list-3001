@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :username, presence: true, uniqueness: true
-  validates :email, email: true
+  # Ei toiminut Herokussa:
+  # validates :email, email: true
   validate :password_validation
 
   def password_validation
