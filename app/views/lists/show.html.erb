@@ -13,15 +13,17 @@
 <p>
   <strong>Purchases:</strong>
   <table id="purchase_table">
-    <% @list.purchases.each do |p| %>
+    <% @list.purchases.unpurchased.each do |p| %>
       <tr id="purchase_id_<%= p.id %>" class="purchase_row" onclick="selectPurchase(<%= p.id %>)">
-        <td><%= p.product.name %></td>
-        <td><%= p.amount %></td>
+        <td class="product_name_cell"><%= p.product.name %></td>
+        <td class="amount_cell"><%= p.amount %></td>
       </tr>
     <% end %>
+  </table>
+  <table>
     <tr id="add_purchase">
-      <td><input type="text" name="product" id="product" /></td>
-      <td><input type="number" min="1" max="1000" value="1" name="amount" id="amount" /></td>
+      <td class="product_name_cell"><input type="text" name="product" id="product" /></td>
+      <td class="amount_cell"><input type="number" min="1" max="1000" value="1" name="amount" id="amount" /></td>
       <td><input type="button" name="add_button" id="add_button" value="Add!" onclick="addPurchase()" /></td>
     </tr>
   </table>

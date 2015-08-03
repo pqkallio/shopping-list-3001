@@ -87,30 +87,24 @@ function addPurchase() {
             amount: amount
         },
         dataType: "json",
-        success: function() {
-            $.ajax({url: "/purchases/last.json",
-                data: {list: list},
-                success: function(data) {
-                    var purchase_table = document.getElementById("purchase_table");
-                    var row = document.createElement("TR");
-                    var productTd = document.createElement("TD");
-                    var amountTd = document.createElement("TD");
-                    row.setAttribute("id", "purchase_id_" + data.id);
-                    row.setAttribute("class", "purchase_row");
-                    row.setAttribute("onclick", "selectPurchase(" + data.id + ")");
-                    productTd.textContent = data.product.name;
-                    amountTd.textContent = data.amount;
+        success: function(data) {
+            var purchase_table = document.getElementById("purchase_table");
+            var row = document.createElement("TR");
+            var productTd = document.createElement("TD");
+            var amountTd = document.createElement("TD");
+            row.setAttribute("id", "purchase_id_" + data.id);
+            row.setAttribute("class", "purchase_row");
+            row.setAttribute("onclick", "selectPurchase(" + data.id + ")");
+            productTd.textContent = data.product.name;
+            amountTd.textContent = data.amount;
 
-                    row.appendChild(productTd);
-                    row.appendChild(amountTd);
-                    purchase_table.appendChild(row);
+            row.appendChild(productTd);
+            row.appendChild(amountTd);
+            purchase_table.appendChild(row);
 
-                    document.getElementById('product').value = "";
-                    document.getElementById('amount').value = 1;
-                    document.getElementById("add_button").disabled = true;
-                },
-                type: "get"
-            });
+            document.getElementById('product').value = "";
+            document.getElementById('amount').value = 1;
+            document.getElementById("add_button").disabled = true;
         },
         error: function() {
             alert("Something went wrong!");
