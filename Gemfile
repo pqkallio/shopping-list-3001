@@ -37,7 +37,7 @@ gem 'valid_email'
 gem 'coveralls', require: false
 
 group :development do
-  gem 'rails-layout', github: 'RailsApps/rails_layout'
+  gem 'rails_layout'
 end
 
 group :test do

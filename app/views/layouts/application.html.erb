@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ShoppingList</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div class="navibar">
-  <% if current_user %>
-    <strong><%= link_to "My lists", lists_user_path(current_user) %></strong>
-  <% end %>
-  <%= link_to 'Products', products_path %>
-  <%= link_to 'Users', users_path %> |
-  <% if current_user %>
-    <%= link_to current_user.username, current_user %>
-    <%= link_to 'Sign out', signout_path, :method => :delete %>
-  <% else %>
-    <%= link_to 'Sign in', signin_path %>
-    <%= link_to 'Sign up', signup_path %>
-  <% end %>
-</div>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Shopping List" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Shopping List" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+    </main>
+  </body>
 </html>
