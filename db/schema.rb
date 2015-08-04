@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513185149) do
+ActiveRecord::Schema.define(version: 20150803142702) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20150513185149) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "user_log_ins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "logout_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -42,10 +49,10 @@ ActiveRecord::Schema.define(version: 20150513185149) do
     t.string   "email"
     t.datetime "joined"
     t.datetime "last_signin"
-    t.boolean  "available"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "admin"
   end
 
 end

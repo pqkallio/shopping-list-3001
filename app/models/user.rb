@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :lists, dependent: :destroy
+  has_many :user_log_in, dependent: :destroy
 
   validates :firstname, presence: true
   validates :lastname, presence: true
@@ -12,6 +13,14 @@ class User < ActiveRecord::Base
   def password_validation
     unless password.match(/[A-Z]/) and password.match(/[[:digit:]]/) and password.length > 7
       errors.add(:password, "The password needs to contain at least one digit and one capital letter, and the minimum password length is eight characters.")
+    end
+  end
+
+  def get_available
+    if UserLogIn.logged_in.find_by(user_id: id)
+      true
+    else
+      false
     end
   end
 end
