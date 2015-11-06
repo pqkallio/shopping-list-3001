@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @user.username %></h1>
+<% if @user.admin? %>
+  <h5>Administrator</h5>
+<% end %>
+
+<% if @user.get_available %>
+    <p><strong>Available now!</strong></p>
+<% else %>
+    <p><strong>Last seen:</strong> <%= get_nice_time_str(@user.get_last_seen) %></p>
+<% end %>
+
 <p>
   <strong>Firstname:</strong>
   <%= @user.firstname %>
@@ -11,28 +22,13 @@
 </p>
 
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
 <p>
   <strong>Joined:</strong>
-  <%= @user.joined %>
-</p>
-
-<p>
-  <strong>Last signin:</strong>
-  <%= @user.last_signin %>
-</p>
-
-<p>
-  <strong>Available:</strong>
-  <%= @user.get_available %>
+  <%= get_nice_time_str(@user.created_at) %>
 </p>
 
 <p>

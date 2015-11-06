@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
 
+  post 'application/toggle_maintenance', to: 'application#toggle_maintenance'
+
   root 'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
